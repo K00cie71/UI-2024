@@ -15,8 +15,13 @@ li {
 }
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background: #000;
     color: #fff;
+    transition: 0.3s;
 }
 
 header nav {
@@ -30,16 +35,16 @@ header nav {
 header::after {
     content: "";
     position: absolute;
-    top: 100px;
+    top: -400px;
     left: 0;
     width: 100%;
-    height: 0;
+    height: 400px;
     background: blue;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 header.active::after {
-    height: 300px;
+    top: 0;
 }
 
 .logo {
@@ -47,6 +52,10 @@ header.active::after {
     background: #f00;
     width: 90px;
     height: 90px;
+}
+
+header.active .logo {
+    background: #fff;
 }
 
 .gnb {

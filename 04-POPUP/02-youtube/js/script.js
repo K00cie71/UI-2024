@@ -13,11 +13,20 @@ $(function () {
         // console.log($videoItem, $(this));
 
         // 선택한 li의 data-link 값을 받아서
-        const videoLink = $(this).attr("data-link");
+        let videoLink = $(this).attr("data-link");
         // const videoLink = $(this).data("link");
+
+        // 자동재생 추가
+        // A += B --> A = A + B
+        // videoLink = videoLink + '?autoplay=1'
+        videoLink += "?autoplay=1";
 
         // iframe의 src값으로 videoLink를 전달
         $video.attr("src", videoLink);
+
+        // 텍스트 받아서 videoTitle 변수에 담기
+        const videoTitle = $(this).text();
+        $caption.text(videoTitle);
 
         // 팝업창 띄우기
         $dim.fadeIn();
@@ -30,6 +39,8 @@ $(function () {
     $btnClose.on("click", function () {
         $dim.fadeOut();
         $videoWrap.removeClass("active");
+
+        $video.attr("src", "");
     });
 
     // setTimeout(동작, 시간)
